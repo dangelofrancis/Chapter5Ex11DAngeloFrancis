@@ -23,14 +23,13 @@ Input Validation:
 */
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 int main()
 {
 	int startingSize;
 	int maxDays;
-	int currentDay = 1;
-	int populationSize = 0;
 	double avgDailyIncrease;
 
 	do
@@ -46,14 +45,14 @@ int main()
 
 	do
 	{
-		cout << "Enter the averge daily population increase (as a percentage): ";
+		cout << "Enter the average daily population increase (as a percentage): ";
 		cin >> avgDailyIncrease;
 
-		if (avgDailyIncrease <= 0)
+		if (avgDailyIncrease < 0)
 		{
 			cout << "The average daily population increase percentage cannot be a negative number." << endl << endl;
 		}
-	} while (avgDailyIncrease <= 0);
+	} while (avgDailyIncrease < 0);
 
 	do
 	{
@@ -66,14 +65,16 @@ int main()
 		}
 	} while (maxDays < 1);
 
-	populationSize == startingSize;
+	double populationSize = startingSize;
 
-	cout << "Day 1: " << populationSize;
+	cout << fixed << setprecision(2);
 
-	for (currentDay == 1; currentDay == maxDays; currentDay++)
+	for (int currentDay = 1; currentDay <= maxDays; currentDay++)
 	{
-		populationSize* avgDailyIncrease;
-		cout << "Day " << currentDay << ": " << populationSize;
+
+		cout << "Day " << currentDay << ": " << populationSize << endl;
+		populationSize += populationSize * (avgDailyIncrease / 100);
 	}
+
 	return 0;
 }
